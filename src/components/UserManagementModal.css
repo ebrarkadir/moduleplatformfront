@@ -1,0 +1,252 @@
+/* === USER MANAGEMENT MODAL === */
+.um-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+}
+
+.um-card {
+  background: #fff !important;
+  border-radius: 14px !important;
+  width: min(850px, 95%) !important;
+  max-height: 90vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid #d1d5db !important;
+}
+
+/* === HEADER === */
+.um-header {
+  background: #ffffff !important;
+  color: #0a192f !important; /* Başlık rengi */
+  padding: 14px 20px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.um-header h2 {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #0a192f !important;
+  margin: 0 !important;
+}
+
+.um-close {
+  background: #0a192f !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 5px 12px !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+}
+.um-close:hover {
+  background: #172b45 !important;
+}
+
+/* === BODY === */
+.um-body {
+  padding: 20px !important;
+  overflow-y: auto !important;
+  background: #fff !important;
+}
+
+/* === FORM === */
+.um-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+
+.um-field {
+  flex: 1 1 30% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.um-field label {
+  font-size: 13px !important;
+  color: #444 !important;
+  margin-bottom: 4px !important;
+}
+
+.um-field input,
+.um-field select {
+  padding: 8px 9px !important;
+  border-radius: 8px !important;
+  border: 1px solid #ccc !important;
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* === YETKİLER === */
+.um-perm-row {
+  display: flex !important;
+  gap: 18px !important;
+  align-items: flex-start !important;
+  flex-wrap: wrap !important;
+}
+
+.um-dropdown {
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.um-toggle {
+  background: #2563eb !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: 0.2s !important;
+  font-weight: 500 !important;
+}
+.um-toggle:hover {
+  background: #1d4ed8 !important;
+}
+
+/* dropdown üstte dursun */
+.um-list {
+  position: absolute !important;
+  top: calc(100% + 4px) !important;
+  left: 0 !important;
+  z-index: 5000 !important;
+  background: #fff !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px !important;
+  width: 240px !important;
+  max-height: 240px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12) !important;
+  padding: 4px 0 !important;
+}
+
+/* checkbox satırı */
+.um-item {
+  display: flex !important;
+  justify-content: space-between !important; /* metin solda, checkbox sağda */
+  align-items: center !important;
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  gap: 8px !important;
+}
+
+.um-item span {
+  flex: 1 !important;
+  text-align: left !important; /* yazılar sola */
+}
+
+.um-item input[type="checkbox"] {
+  margin-left: 12px !important;
+  order: 2 !important; /* checkbox'ı sona al */
+  transform: scale(1.1) !important;
+  cursor: pointer !important;
+}
+
+.um-item:hover {
+  background: #eef2ff !important;
+}
+
+/* admin iken buton kapalı hissi */
+.um-toggle.is-disabled {
+  background: #e5e7eb !important;
+  color: #9aa1a9 !important;
+  cursor: not-allowed !important;
+}
+
+/* === EKSTRA ALAN === */
+.um-extra {
+  display: flex !important;
+  gap: 18px !important;
+  align-items: center !important;
+}
+
+/* === BUTTONS === */
+.um-actions {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  margin-top: 12px !important;
+}
+
+.um-actions button {
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  border: none !important;
+  transition: 0.15s !important;
+}
+
+.um-actions button:hover {
+  opacity: 0.9 !important;
+}
+
+.um-actions button:not(.um-outline) {
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+.um-actions button:not(.um-outline):hover {
+  background: #1e40af !important;
+}
+
+.um-outline {
+  background: #f9fafb !important;
+  border: 1px solid #ccc !important;
+  color: #333 !important;
+}
+
+/* === TABLE === */
+.um-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin-top: 10px !important;
+}
+.um-table th {
+  background: #f3f4f6 !important;
+  padding: 8px 10px !important;
+  font-weight: 600 !important;
+}
+.um-table td {
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 8px 10px !important;
+}
+
+/* Düzenle / Sil butonları */
+.um-edit {
+  background: #2563eb !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  transition: 0.2s !important;
+}
+.um-edit:hover {
+  background: #1e3a8a !important;
+}
+
+.um-del {
+  background: #dc2626 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 5px 10px !important;
+  cursor: pointer !important;
+  transition: 0.2s !important;
+}
+.um-del:hover {
+  background: #b91c1c !important;
+}

@@ -1,0 +1,587 @@
+:root {
+  --bg: #f5f7fa;
+  --card: #fff;
+  --border: #d9e1eb;
+  --brand1: #2563eb;
+  --brand2: #1d4ed8;
+  --brand-grad: linear-gradient(135deg, var(--brand1), var(--brand2));
+  --text: #1e2430;
+  --muted: #6b7280;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+}
+
+/* Kullanıcı etiketi tıklanabilir */
+.user-tag.clickable {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.user-tag.clickable:hover {
+  background: #e2e8f0;
+}
+
+/* Dropdown menü üstüne gelince parlama efekti */
+.dropdown-menu button:hover {
+  background: #f0f4ff;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 200;
+  animation: fadeIn 0.15s ease-in-out;
+  overflow: hidden;
+}
+
+.dropdown-menu button {
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  transition: background 0.15s;
+}
+
+.dropdown-menu button:hover {
+  background: #f0f4ff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Genel yapı */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Butonlar */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--brand-grad);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.btn.outline {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Navbar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+}
+.brand-dot {
+  opacity: 0.55;
+}
+.topbar-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.user-tag {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #eef2f7;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.user-name {
+  font-weight: 600;
+}
+.user-role {
+  font-size: 12px;
+  background: #475569;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Genel layout */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.app-body {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sidebar .toggle {
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sidebar .toggle:hover {
+  transform: scale(1.2);
+}
+
+.sidebar h3 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  overflow: auto;
+}
+.sidebar .toggle {
+  transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed .toggle {
+  transform: rotate(180deg);
+}
+
+.sidebar.collapsed .side-item {
+  opacity: 0;
+}
+
+.side-item {
+  text-align: left;
+  border: none;
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: 0.15s;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.side-item:hover {
+  background: #f0f4ff;
+  border-color: #c5d3ff;
+}
+.side-item.active {
+  background: var(--brand-grad);
+  color: #fff;
+  border-color: transparent;
+}
+.side-item.subtle {
+  background: #eef2f7;
+}
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Ana içerik */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+  display: flex;
+}
+.main.expanded {
+  padding-left: 16px;
+}
+
+/* Modül alanı */
+.module-shell {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+.module-iframe {
+  border: none;
+  width: 100%;
+  height: calc(100vh - 120px);
+}
+.empty-hint {
+  margin: auto;
+  color: var(--muted);
+}
+.muted {
+  color: var(--muted);
+  padding: 6px 8px;
+}
+
+/* ---------- Popup (overlay modal) ---------- */
+.overlay-panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.overlay-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: min(600px, 95%);
+}
+.overlay-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+.overlay-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+.overlay-card input,
+.overlay-card textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+.overlay-card textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+.overlay-card label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+.inline-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.overlay-card button {
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: var(--brand-grad);
+  color: #fff;
+}
+.overlay-card button.outline {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.overlay-card button:hover {
+  filter: brightness(1.05);
+}
+
+/* ---------- Modül Listesi (Tablo) ---------- */
+.module-table-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.module-table th,
+.module-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.module-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.module-table tr:hover td {
+  background: #f0f4ff;
+}
+
+.module-table td button {
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.module-table td button:hover {
+  background: var(--brand1);
+  color: #fff;
+  border-color: var(--brand1);
+}
+/* --- Kullanıcı Yönetimi Popup özel stilleri --- */
+
+.user-modal {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.user-modal h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.user-modal header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+}
+
+.user-modal label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #334155;
+}
+
+.user-modal input[type="text"],
+.user-modal input[type="password"],
+.user-modal select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.user-modal input:focus,
+.user-modal select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Yetki grid */
+.permissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 6px 12px;
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.permissions-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* Form üstü */
+.user-form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.user-form-row .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Butonlar */
+.inline-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.inline-actions button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+}
+
+.inline-actions button:not(.outline) {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+}
+
+.inline-actions button.outline {
+  background: #fff;
+  color: #1e293b;
+  border: 1px solid #d1d5db;
+}
+
+.inline-actions button:hover {
+  filter: brightness(1.05);
+}
+
+/* Tablo */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.user-table th,
+.user-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.user-table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #334155;
+}
+
+.user-table tr:hover td {
+  background: #f1f5ff;
+}
+
+.user-table td:last-child {
+  text-align: right;
+}
+
+/* Düzenle - Sil butonları */
+.user-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.user-actions button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.user-actions .edit {
+  background: #2563eb;
+}
+
+.user-actions .delete {
+  background: #dc2626;
+}
+
+.user-actions button:hover {
+  filter: brightness(1.1);
+}

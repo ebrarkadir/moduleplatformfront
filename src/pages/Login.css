@@ -1,0 +1,127 @@
+:root {
+  --brand1: #2563eb;
+  --brand2: #1d4ed8;
+  --brand-grad: linear-gradient(135deg, var(--brand1), var(--brand2));
+  --text: #1e2430;
+  --border: #d9e1eb;
+  --card: #ffffff;
+  --shadow: 0 4px 14px -4px rgba(20, 40, 80, 0.18),
+    0 10px 32px -6px rgba(20, 40, 80, 0.12);
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+#loginShell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 18px;
+  background: url("/public/images/wallpaper.jpg") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 95%;
+  padding: 40px 32px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.login-badge {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: var(--brand-grad);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 22px 11px;
+  border-radius: 999px;
+  letter-spacing: 0.55px;
+}
+
+.login-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.login-logo img {
+  max-width: 90px;
+  height: auto;
+}
+
+.login-card h1 {
+  font-size: 32px;
+  margin: 78px 0 42px;
+  color: var(--text);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  background: var(--brand-grad);
+  color: white;
+  transition: 0.25s;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+button.outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+.inline-hint {
+  color: crimson;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
