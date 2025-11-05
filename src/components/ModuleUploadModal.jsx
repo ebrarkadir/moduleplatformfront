@@ -3,6 +3,7 @@ import axios from "axios";
 import "../pages/panel.css";
 import { toast } from "react-toastify";
 import ConfirmDialog from "./ConfirmDialog"; // ✅ eklendi
+import deleteIcon from "../assets/delete.png";
 
 const API_BASE = "http://localhost:5067";
 
@@ -57,12 +58,16 @@ const ModuleUploadModal = ({ open, onClose, onUploaded }) => {
       formData.append("Description", description);
       formData.append("File", file);
 
-      const response = await axios.post(`${API_BASE}/api/modules/upload`, formData, {
-        headers: {
-          Authorization: `Bearer ${auth?.accessToken}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        `${API_BASE}/api/modules/upload`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.accessToken}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       toast.success(`${name} başarıyla eklendi.`);
       onUploaded(response.data);
@@ -194,18 +199,30 @@ const ModuleUploadModal = ({ open, onClose, onUploaded }) => {
                     <td>{new Date(m.createdAt).toLocaleDateString("tr-TR")}</td>
                     <td>
                       <button
-                        className="btn outline"
+                        className="module-del-btn"
                         onClick={() => confirmDelete(m.id, m.name)}
                         disabled={deletingId === m.id}
+                        data-tooltip="Modülü Sil"
                       >
-                        {deletingId === m.id ? "Siliniyor..." : "Sil"}
+                        {deletingId === m.id ? (
+                          "Siliniyor..."
+                        ) : (
+                          <img
+                            src={deleteIcon}
+                            alt="delete"
+                            className="module-del-icon"
+                          />
+                        )}
                       </button>
                     </td>
                   </tr>
                 ))}
                 {!modules.length && (
                   <tr>
-                    <td colSpan="6" style={{ textAlign: "center", color: "#6b7280" }}>
+                    <td
+                      colSpan="6"
+                      style={{ textAlign: "center", color: "#6b7280" }}
+                    >
                       Henüz yüklenmiş modül bulunmuyor.
                     </td>
                   </tr>

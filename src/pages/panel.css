@@ -585,3 +585,48 @@ body {
 .user-actions button:hover {
   filter: brightness(1.1);
 }
+
+
+/* === MODULE DELETE BUTTON === */
+.module-del-btn {
+  background: #dc2626 !important; /* kırmızı */
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.module-del-btn:hover {
+  background: #991b1b !important; /* koyu kırmızı */
+  transform: scale(1.05);
+}
+
+/* ikon */
+.module-del-icon {
+  width: 18px !important;
+  height: 18px !important;
+  filter: brightness(0) invert(1) !important; /* beyaz ikon */
+}
+
+/* tooltip */
+.module-del-btn:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 1;
+  z-index: 99999;
+}

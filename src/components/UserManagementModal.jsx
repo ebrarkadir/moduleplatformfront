@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "../pages/panel.css";
 import "./UserManagementModal.css";
 import ConfirmDialog from "./ConfirmDialog"; // ✅ yeni eklendi
+import editIcon from "../assets/edit.png";
+import deleteIcon from "../assets/delete.png";
 
 const API_BASE = "http://localhost:5067";
 
@@ -208,7 +210,6 @@ const UserManagementModal = ({ open, onClose }) => {
     return "View";
   };
 
-  
   return (
     <div className="um-overlay">
       <div className="um-card">
@@ -347,14 +348,28 @@ const UserManagementModal = ({ open, onClose }) => {
 
                     <td>{u.permissions?.join(", ") || "-"}</td>
                     <td className="um-actions-cell">
-                      <button className="um-edit" onClick={() => handleEdit(u)}>
-                        Düzenle
-                      </button>
                       <button
-                        className="um-del"
-                        onClick={() => confirmDelete(u.id, u.username)}
+                        className="um-table-icon-btn edit-btn"
+                        onClick={() => handleEdit(u)}
+                        data-tooltip="Kullanıcıyı Düzenle"
                       >
-                        Sil
+                        <img
+                          src={editIcon}
+                          alt="edit"
+                          className="um-table-icon"
+                        />
+                      </button>
+
+                      <button
+                        className="um-table-icon-btn delete-btn"
+                        onClick={() => confirmDelete(u.id, u.username)}
+                        data-tooltip="Kullanıcıyı Sil"
+                      >
+                        <img
+                          src={deleteIcon}
+                          alt="delete"
+                          className="um-table-icon"
+                        />
                       </button>
                     </td>
                   </tr>

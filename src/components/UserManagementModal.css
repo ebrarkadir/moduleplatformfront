@@ -198,15 +198,30 @@
   color: #fff !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
 }
+
 .um-actions button:not(.um-outline):hover {
-  background: #1e40af !important;
+  background: #1d4ed8 !important;
+  transform: scale(1.03);
 }
 
+
+
 .um-outline {
-  background: #f9fafb !important;
-  border: 1px solid #ccc !important;
-  color: #333 !important;
+  background: #6b7280 !important; /* orta gri */
+  color: #fff !important; /* beyaz yazı */
+  border: none !important;
+  font-weight: 500 !important;
+  transition: all 0.25s ease !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
 }
+
+.um-outline:hover {
+  background: #4b5563 !important; /* koyu gri */
+  transform: scale(1.03);
+}
+
+
 
 /* === TABLE === */
 .um-table {
@@ -249,4 +264,63 @@
 }
 .um-del:hover {
   background: #b91c1c !important;
+}
+
+
+
+
+/* === USER MANAGEMENT ICON BUTTONS === */
+/* === USER MANAGEMENT ICON BUTTONS === */
+.um-table-icon-btn {
+  border: none !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.25s ease !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 6px !important;
+}
+
+/* Düzenle (mavi) */
+.um-table-icon-btn.edit-btn {
+  background: #2563eb !important; /* mavi */
+}
+.um-table-icon-btn.edit-btn:hover {
+  background: #1e40af !important; /* koyu mavi */
+}
+
+/* Sil (kırmızı) */
+.um-table-icon-btn.delete-btn {
+  background: #dc2626 !important; /* kırmızı */
+}
+.um-table-icon-btn.delete-btn:hover {
+  background: #991b1b !important; /* koyu kırmızı */
+}
+
+/* İkon */
+.um-table-icon {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) !important; /* ikonları beyaz yapar */
+}
+
+/* Tooltip */
+.um-table-icon-btn:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 1;
+  z-index: 99999;
 }
