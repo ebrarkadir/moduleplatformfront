@@ -6,7 +6,7 @@ import axios from "axios";
 import { getAuth } from "../api/AuthService";
 import { hasPermission } from "../core/utils/permissionHelper";
 
-const API_BASE = "http://localhost:5067";
+const API_BASE = "http://172.25.0.10:5081";
 
 const Sidebar = ({
   collapsed,

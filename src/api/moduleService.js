@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 🔹 Backend base adresini kendi sistemine göre ayarla
-export const API_BASE = "http://localhost:5067";
+export const API_BASE = "http://172.25.0.10:5081";
 
 // 🔹 Tüm modülleri çek
 export const fetchModules = async () => {

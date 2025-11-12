@@ -8,7 +8,7 @@ import ConfirmDialog from "./ConfirmDialog"; // ✅ yeni eklendi
 import editIcon from "../assets/edit.png";
 import deleteIcon from "../assets/delete.png";
 
-const API_BASE = "http://localhost:5067";
+const API_BASE = "http://172.25.0.10:5081";
 
 const UserManagementModal = ({ open, onClose }) => {
   const [users, setUsers] = useState([]);

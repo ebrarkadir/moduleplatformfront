@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+/* === GLOBAL CARET HIDE === */
+input,
+textarea {
+  caret-color: transparent !important;
+}
+.um-field input {
+  caret-color: transparent !important;
+}

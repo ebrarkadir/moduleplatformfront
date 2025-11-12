@@ -168,43 +168,61 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 260px;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: var(--card);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
+  background: #0b1221 !important;
+  border-right: 1px solid #1e293b !important;
+  color: #f8fafc !important;
+  padding: 12px !important;
 }
 
 .sidebar.collapsed {
   width: 60px;
 }
-
+/* --- Sidebar Başlık Modern Minimal --- */
 .sidebar-head {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 10px 8px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* Geri ikonu */
 .sidebar .toggle {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
+  color: #cbd5e1;
+  background: none;
   border: none;
-  background: transparent;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .sidebar .toggle:hover {
-  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
 }
 
+/* Modüller etiketi */
 .sidebar h3 {
   margin: 0;
-  font-size: 14px;
-  letter-spacing: 0.4px;
+  font-size: 16px;              /* 🔹 Daha büyük yazı */
+  font-weight: 500;             /* 🔹 Hafif daha ince, zarif */
+  color: #f1f5f9;               /* 🔹 Daha açık gri-beyaz ton */
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 10px;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
+
+.sidebar h3:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+
 .sidebar-body {
   display: flex;
   flex-direction: column;
@@ -212,6 +230,8 @@ body {
   min-height: 0;
   overflow: auto;
 }
+
+
 .sidebar .toggle {
   transition: transform 0.3s ease;
 }
@@ -629,4 +649,11 @@ body {
   white-space: nowrap;
   opacity: 1;
   z-index: 99999;
+}
+input,
+textarea {
+  caret-color: transparent !important;
+}
+.um-field input {
+  caret-color: transparent !important;
 }

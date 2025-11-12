@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import ConfirmDialog from "./ConfirmDialog"; // ✅ eklendi
 import deleteIcon from "../assets/delete.png";
 
-const API_BASE = "http://localhost:5067";
+const API_BASE = "http://172.25.0.10:5081";
 
 const ModuleUploadModal = ({ open, onClose, onUploaded }) => {
   const [name, setName] = useState("");

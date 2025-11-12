@@ -125,3 +125,10 @@ button.outline {
   font-size: 13px;
   margin-bottom: 8px;
 }
+input,
+textarea {
+  caret-color: transparent !important;
+}
+.um-field input {
+  caret-color: transparent !important;
+}
