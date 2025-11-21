@@ -14,9 +14,12 @@ const LogsModal = ({ open, onClose }) => {
   const loadUsers = async () => {
     try {
       const auth = JSON.parse(localStorage.getItem("auth"));
-      const { data } = await axios.get(`${API_BASE}/api/users`, {
+
+      // 🔥 BURADAKİ DEĞİŞİKLİK: GET_USERS log’unu tetiklememesi için log=false parametresi eklendi
+      const { data } = await axios.get(`${API_BASE}/api/users?log=false`, {
         headers: { Authorization: `Bearer ${auth?.accessToken}` },
       });
+
       setUsers(data);
     } catch (err) {
       console.error("Kullanıcı listesi alınamadı:", err);
@@ -41,6 +44,7 @@ const LogsModal = ({ open, onClose }) => {
 
   useEffect(() => {
     if (open) {
+      // 🔹 Eski gibi tamamen aynı, ama artık GET_USERS spam yok
       Promise.all([loadUsers(), loadLogs()]);
     }
   }, [open]);
@@ -57,7 +61,8 @@ const LogsModal = ({ open, onClose }) => {
     if (!roleValue) return "-";
     const val = String(roleValue).toLowerCase();
     if (val === "1" || val === "admin") return "Admin";
-    if (val === "2" || val === "constructor" || val === "constracter") return "Constructor";
+    if (val === "2" || val === "constructor" || val === "constracter")
+      return "Constructor";
     if (val === "3" || val === "view") return "View";
     return "-";
   };
